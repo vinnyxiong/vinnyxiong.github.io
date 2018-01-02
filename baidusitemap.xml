@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/Meteor-DDP-translate.html</loc>
+    <lastmod>2017-08-11T11:54:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>【转载】Meteor-DDP 翻译</title>
+        <pubTime>2017-08-11T11:18:56.000Z</pubTime>
+        
+        <tag>Meteor</tag>
+         
+        <tag>DDP</tag>
+         
+         
+           
+             
+              <breadCrumb title="Meteor" url="http://vinnyxiong.cn/categories/Meteor/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/life-2017-summer-time.html</loc>
+    <lastmod>2017-07-12T02:05:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>2017 夏至已至</title>
+        <pubTime>2017-07-12T02:05:56.000Z</pubTime>
+        
+        <tag>公司</tag>
+         
+        <tag>工作</tag>
+         
+        <tag>学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="碎碎念" url="http://vinnyxiong.cn/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/life-my-blogs.html</loc>
+    <lastmod>2017-07-12T01:46:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的博客</title>
+        <pubTime>2017-02-13T14:21:14.000Z</pubTime>
+        
+        <tag>博客</tag>
+         
+        <tag>生活</tag>
+         
+         
+           
+             
+              <breadCrumb title="碎碎念" url="http://vinnyxiong.cn/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/Hexo%E4%B9%8B%E6%97%85-%E4%B8%89-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E4%B8%AA%E6%80%A7%E5%8C%96%E5%8F%8ANexT%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE.html</loc>
+    <lastmod>2017-07-11T11:52:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo之旅(三)：Hexo博客个性化及NexT主题配置</title>
+        <pubTime>2016-03-03T01:24:01.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://vinnyxiong.cn/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/Hexo%E4%B9%8B%E6%97%85-%E4%B8%80-%EF%BC%9AHexo%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2.html</loc>
+    <lastmod>2017-02-13T14:38:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo之旅(一)：Hexo我的博客</title>
+        <pubTime>2016-02-25T04:46:19.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://vinnyxiong.cn/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/iOS-%E5%B9%B3%E5%8F%B0-TestFlight-%E5%A4%96%E9%83%A8%E6%B5%8B%E8%AF%95%E9%82%80%E8%AF%B7%E7%A0%81%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88.html</loc>
+    <lastmod>2017-02-05T09:10:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS 平台 TestFlight 外部测试邀请码优化方案</title>
+        <pubTime>2017-01-20T12:16:32.000Z</pubTime>
+        
+        <tag>TestFlight</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/iOS-OC%E5%AE%9E%E7%8E%B0LRU%E7%AE%97%E6%B3%95NSDictionary%E5%AE%B9%E5%99%A8%EF%BC%88%E9%9D%9E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%89.html</loc>
+    <lastmod>2016-08-16T11:52:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS-OC实现LRU算法NSDictionary容器（非线程安全）</title>
+        <pubTime>2016-08-02T09:30:17.000Z</pubTime>
+        
+        <tag>LRU算法</tag>
+         
+        <tag>NSDictionary容器</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/Hexo%E4%B9%8B%E6%97%85-%E4%BA%8C-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E5%9C%A8%20Mac%20OS%20%E5%B9%B3%E5%8F%B0-.html</loc>
+    <lastmod>2016-04-05T15:52:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)</title>
+        <pubTime>2016-03-01T02:54:02.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://vinnyxiong.cn/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/nsoperation-and-nsoperationqueue-1.html</loc>
+    <lastmod>2016-03-29T01:36:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS多线程(一)：NSInvocationOperation 和 NSBlockOperation 使用</title>
+        <pubTime>2015-12-22T12:17:27.000Z</pubTime>
+        
+        <tag>多线程</tag>
+         
+        <tag>NSOperation</tag>
+         
+        <tag>NSInvocationOperation</tag>
+         
+        <tag>NSBlockOperation</tag>
+         
+        <tag>NSOperationQueue</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/uiswitch-repeated-calls-uicontroleventvaluechanged-solution.html</loc>
+    <lastmod>2016-03-29T01:24:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用UISwitch重复调用UIControlEventValueChanged的问题解决方法</title>
+        <pubTime>2015-12-02T08:21:53.000Z</pubTime>
+        
+        <tag>UISwitch</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/limit-uitextfield-input-word-count.html</loc>
+    <lastmod>2016-03-29T01:23:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>UITextField限制字数的实现</title>
+        <pubTime>2015-12-02T12:03:51.000Z</pubTime>
+        
+        <tag>UITextField</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/%E5%9C%A8Xcode%E4%B8%AD%E4%B8%BAmain%E5%87%BD%E6%95%B0%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B0.html</loc>
+    <lastmod>2016-03-29T01:15:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>在Xcode中为main函数设置输入参数</title>
+        <pubTime>2016-03-24T14:28:26.000Z</pubTime>
+        
+        <tag>Object-C</tag>
+         
+        <tag>Xcode</tag>
+         
+         
+           
+             
+              <breadCrumb title="Object-C" url="http://vinnyxiong.cn/categories/Object-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/hello-world.html</loc>
+    <lastmod>2016-03-02T11:40:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2016-02-14T05:14:15.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://vinnyxiong.cn/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/nsoperation-and-nsoperationqueue-3.html</loc>
+    <lastmod>2016-03-01T02:13:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS多线程(三)：NSOperationQueue 的使用</title>
+        <pubTime>2015-12-22T12:17:46.000Z</pubTime>
+        
+        <tag>多线程</tag>
+         
+        <tag>NSOperation</tag>
+         
+        <tag>NSInvocationOperation</tag>
+         
+        <tag>NSBlockOperation</tag>
+         
+        <tag>NSOperationQueue</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://vinnyxiong.cn//blog/nsoperation-and-nsoperationqueue-2.html</loc>
+    <lastmod>2016-03-01T02:12:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS多线程(二)：NSOperation 自定义子类实现非并发和并发操作</title>
+        <pubTime>2015-12-22T12:17:41.000Z</pubTime>
+        
+        <tag>多线程</tag>
+         
+        <tag>NSOperation</tag>
+         
+        <tag>NSInvocationOperation</tag>
+         
+        <tag>NSBlockOperation</tag>
+         
+        <tag>NSOperationQueue</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://vinnyxiong.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+</urlset>
