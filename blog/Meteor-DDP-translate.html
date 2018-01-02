@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="JetjrKc8oFqTtBHbhXoWEt8JqzMxLa7P1eGlKGniGmA" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="W2rAP9akzL" />
+
+
+
+
+  <meta name="360-site-verification" content="66512f81ccac9717dbf92c52b925b64d" />
+
+
+
+  <meta name="sogou-site-verification" content="851iLtm10m" />
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Meteor,DDP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="VinnyXiong's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="转载来源：Meteor-DDP翻译  DDP定义DDP是一个客户端和服务端之间的协议，他支持两种操作：  由客户端向服务端发起远程过程调用 客户端订阅数据，在他们变化时，服务器仍然保持向客户端发起通知。  本文定义了版本为”pre1“的DDP，以上仅仅是粗略的描述而非完整明确的定义。 一般消息结构无论SockJS还是WebSockets，DDP都将使用较低级别的消息传输方式。（现在，你可以通过UR">
+<meta name="keywords" content="Meteor,DDP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】Meteor-DDP 翻译">
+<meta property="og:url" content="http://vinnyxiong.cn/blog/Meteor-DDP-translate.html">
+<meta property="og:site_name" content="VinnyXiong&#39;s Notes">
+<meta property="og:description" content="转载来源：Meteor-DDP翻译  DDP定义DDP是一个客户端和服务端之间的协议，他支持两种操作：  由客户端向服务端发起远程过程调用 客户端订阅数据，在他们变化时，服务器仍然保持向客户端发起通知。  本文定义了版本为”pre1“的DDP，以上仅仅是粗略的描述而非完整明确的定义。 一般消息结构无论SockJS还是WebSockets，DDP都将使用较低级别的消息传输方式。（现在，你可以通过UR">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-11T11:54:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转载】Meteor-DDP 翻译">
+<meta name="twitter:description" content="转载来源：Meteor-DDP翻译  DDP定义DDP是一个客户端和服务端之间的协议，他支持两种操作：  由客户端向服务端发起远程过程调用 客户端订阅数据，在他们变化时，服务器仍然保持向客户端发起通知。  本文定义了版本为”pre1“的DDP，以上仅仅是粗略的描述而非完整明确的定义。 一般消息结构无论SockJS还是WebSockets，DDP都将使用较低级别的消息传输方式。（现在，你可以通过UR">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vinnyxiong.cn/blog/Meteor-DDP-translate.html"/>
+
+
+
+
+
+  <title>【转载】Meteor-DDP 翻译 | VinnyXiong's Notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-74176655-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5d57cf2d1d17a4c46d9fc75184425bf7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">VinnyXiong's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">熊远文的个人博客</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blogs">
+          <a href="/blogs/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />
+            
+            优秀博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Kh4QjejjfHq9XdTsbHzu','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://vinnyxiong.cn/blog/Meteor-DDP-translate.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="熊远文(vinnyxiong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VinnyXiong's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">【转载】Meteor-DDP 翻译</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-11T19:18:56+08:00">
+                2017-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Meteor/" itemprop="url" rel="index">
+                    <span itemprop="name">Meteor</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/Meteor-DDP-translate.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/blog/Meteor-DDP-translate.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote><p>转载来源：<a href="https://cnodejs.org/topic/51b030d9555d34c678e5fb2e" target="_blank" rel="noopener">Meteor-DDP翻译</a></p>
+</blockquote>
+<h1 id="DDP定义"><a href="#DDP定义" class="headerlink" title="DDP定义"></a>DDP定义</h1><p><code>DDP</code>是一个<code>客户端</code>和<code>服务端</code>之间的协议，他支持两种操作：</p>
+<ul>
+<li>由<code>客户端</code>向<code>服务端</code>发起远程过程调用</li>
+<li><code>客户端</code>订阅数据，在他们变化时，<code>服务器</code>仍然保持向客户端发起通知。</li>
+</ul>
+<p>本文定义了版本为”<code>pre1</code>“的<code>DDP</code>，以上仅仅是粗略的描述而非完整明确的定义。</p>
+<h1 id="一般消息结构"><a href="#一般消息结构" class="headerlink" title="一般消息结构"></a>一般消息结构</h1><p>无论<code>SockJS</code>还是<code>WebSockets</code>，<code>DDP</code>都将使用较低级别的消息传输方式。（现在，你可以通过<code>URL</code>连接<code>SockJS</code>的<code>/sockjs以及WebSockets的/websocket</code>。后者很可能将改变为主应用<code>URL</code>指定的<code>WebSocket</code>子协议）</p>
+<p><code>DDP</code>消息就是指定了<code>EJSON</code>类型字段的<code>JSON</code>对象。每个消息都有一个<code>msg</code>字段来指定消息类型，或根据其他字段确定消息类型。<br><a id="more"></a></p>
+<h1 id="建立DDP连接"><a href="#建立DDP连接" class="headerlink" title="建立DDP连接"></a>建立DDP连接</h1><h2 id="message分类"><a href="#message分类" class="headerlink" title="message分类"></a>message分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">connect （client → server）</span><br><span class="line">session : string （尝试连接到现有DDP会话）</span><br><span class="line">version : string （拟定的协议版本）</span><br><span class="line">support : [string] （客户端支持的协议版本，按优先顺序排列）</span><br><span class="line">connected （server → client）</span><br><span class="line">session : string （DDP会话标识）</span><br><span class="line">failed （server → client）</span><br><span class="line">version : string （建议连接协议版本）</span><br></pre></td></tr></table></figure>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p><code>服务器</code>可能会发送一个缺失键名为<code>msg</code>的初始化<code>message</code>，如果是这样的，<code>客户端</code>会忽略它，也不会等待此<code>message</code>。（此<code>message</code>是通过<code>SockJS</code>传输帮助实现<code>代码热部署</code>的，可能不应该，但目前我们是通过<code>WebSocket</code>实现的）</p>
+<ul>
+<li><code>客户端</code>发送<code>connect</code>消息。</li>
+<li>如果<code>服务器</code>允许通信的消息的<code>version</code>与接收到的<code>connect</code>消息匹配，<code>服务器</code>会发送<code>connected</code>消息。</li>
+<li>否则<code>服务器</code>会关闭底层传输，发送<code>failed</code>消息，告之允许通信的<code>DDP</code>版本以及<code>connect</code>消息中的<code>support</code>字段。</li>
+<li><code>客户端</code>建新<code>connect</code>消息尝试使用不同版本的<code>DDP</code>连接。<code>客户端</code>会发送众多的<code>connect</code>消息，直到连接匹配。如果<code>服务器</code>还不支持，就会忽略掉这些附加信息。</li>
+</ul>
+<p><code>connect</code>消息的<code>support</code>字段存储的版本信息是根据<code>客户端</code>的喜好优先级排列的。如果按照这个顺序，由客户端提出的<code>version</code>不是<code>服务器</code>支持的，<code>服务器</code>必会发送<code>failed</code>消息，强制<code>客户端</code>切换到更好的版本。</p>
+<p>当<code>客户端</code>第一次连接到服务器，他会设置<code>version</code>为自己最认可的版本。如果有需要，<code>客户端</code>可以记住最终能与<code>服务端</code>匹配的版本。如果<code>服务端</code>能拥有更好的版本或者<code>客户端</code>已经升级，<code>客户端</code>始终依靠<code>服务端</code>发来的<code>failed</code>消息。</p>
+<h1 id="管理数据"><a href="#管理数据" class="headerlink" title="管理数据"></a>管理数据</h1><h2 id="message分类-1"><a href="#message分类-1" class="headerlink" title="message分类"></a>message分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">sub （client → server）</span><br><span class="line">id : string （订阅的标识符）</span><br><span class="line">name : string （订阅的名字）</span><br><span class="line">params : [EJSON] （可选的订阅参数）</span><br><span class="line">unsub （client → server）</span><br><span class="line">id : string （sub消息中的id）</span><br><span class="line">nosub （server → client）</span><br><span class="line">id : string （sub消息中的id）</span><br><span class="line">error : Error（可选的错误，订阅错误总结或者订阅不存在等）</span><br><span class="line">added （server → client）</span><br><span class="line">collection : string （Collecction名字）</span><br><span class="line">id : string （Documentid）</span><br><span class="line">fields : EJSON （可选的EJSON值）</span><br><span class="line">changed （server → client）</span><br><span class="line">collection : string （Collecction名字）</span><br><span class="line">id : string （Documentid）</span><br><span class="line">fields : EJSON （可选的EJSON值）</span><br><span class="line">cleared : [string] （可选的，要删除的字段名）</span><br><span class="line">removed （server → client）</span><br><span class="line">collection : string （Collecction名字）</span><br><span class="line">id : string （Documentid）</span><br><span class="line">ready （server → client）</span><br><span class="line">subs : [string] （所有通过sub传递的id集）</span><br><span class="line">addedBefore （server → client）</span><br><span class="line">collection : string （Collecction名字）</span><br><span class="line">id : string （Documentid）</span><br><span class="line">fields : EJSON （可选的EJSON值）</span><br><span class="line">before : string/null （Document添加前的id，或者null表示添加完毕）</span><br><span class="line">movedBefore （server → client）</span><br><span class="line">collection : string （Collecction名字）</span><br><span class="line">id : string （Documentid）</span><br><span class="line">before : string/null （Document删除前的id，或者null表示删除完毕）</span><br></pre></td></tr></table></figure>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ul>
+<li>客户端指定感兴趣的信息集，发送sub消息给服务器。</li>
+<li>在任何时间里，sub消息都会被通知到，服务器再发送数据到客户端。数据包含了added、changed、removed消息。这些消息的本地数据模型将会被跟踪。<ul>
+<li>added消息表示了本地数据集的一个Document。id字段将被指定为Document的id，其他字段将被指定为Document的其他字段。minimongo通过特殊的方式将id转化为_id以存储到Mongo的文档集中。</li>
+<li>changed消息表示了本地数据集的一个Document有了新的字段值或某些字段被删除了。id字段指定了被改变了的Document的id，fields如果存在，表示文档中哪些字段值应该被替换。需要清除的字段应该放在cleared中以数组的形式呈现。</li>
+<li>removed消息表示了本地数据集的一个Document需要删除了。id字段指定了需要删除的Document的id。</li>
+</ul>
+</li>
+<li>如果一个Collection被订购过，addedBefore消息可以取代added消息。包含有该id的Document在被添加后可插入before字段。如果before字段设置为null,Document将被添加，直到结束。对于一个给定的集合，服务器只应发送added或addedBefore消息，而不是两者混合起来发。并且只能发送movedBefore消息给使用addedBefore消息的Collection。</li>
+</ul>
+<p><strong>注意 ：</strong></p>
+<p>被订购过的<code>Collection</code>的<code>DDP</code>消息没有使用在<code>Meteor</code>中，不过今后将会使用。</p>
+<ul>
+<li>客户端保持每一个Collection的数据。每个订阅不会做自己的数据集，但重复订阅会导致服务器发送关于Collection数据的字段联盟。例如，订阅器A说文档x有字段{foo:1,bar:2},订阅器B说文档x有{foo:1,baz:3}，此时客户端将通知文档x拥有字段{foo:1,bar:2,baz:3}。如果字段值因为不同订阅器发生冲突，服务器会发送一个可用的字段值。</li>
+<li>当一个或多个订阅完成首批数据的发送，服务器将发送ready消息并伴随他们的id信息。</li>
+</ul>
+<h1 id="远程过程调用"><a href="#远程过程调用" class="headerlink" title="远程过程调用"></a>远程过程调用</h1><h2 id="message分类-2"><a href="#message分类-2" class="headerlink" title="message分类"></a>message分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">method （client → server）</span><br><span class="line">method : string （方法名）</span><br><span class="line">params : [EJSON] （可选的方法参数）</span><br><span class="line">id : string （方法调用的客户端标识）</span><br><span class="line">result （server → client）</span><br><span class="line">id : string （method消息中的id）</span><br><span class="line">error : Error （可选的，方法调用时的错误或者方法不存在）</span><br><span class="line">result : EJSON （可选的，方法的返回值）</span><br><span class="line">updated （server → client）</span><br><span class="line">methods : string （所有调用过method消息的id）</span><br></pre></td></tr></table></figure>
+<h2 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>客户端发送一个method消息到服务器</li>
+<li>服务端响应一个result消息到客户端，带有方法调用的返回值或者错误信息。</li>
+<li>如果客户端接受过订阅，方法调用将直接影响数据。一旦服务端基于此方式完成所有相应数据的发送，服务器会发送一个updated消息给客户端，并带有所有方法的id集。</li>
+</ul>
+<h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><p>result和nosub消息中会出现一个可选的error字段，一个错误消息具备如下字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error : number （错误号）</span><br><span class="line">reason : string （可选的错误原因）</span><br><span class="line">details : string （可选的错误详情）</span><br></pre></td></tr></table></figure>
+<p>error用来呈现订阅或者远程调用方法时出现的错误信息，订阅不存在或者调用方法不存在时，也通过这个传递信息。</p>
+<p>客户端也能发送其他的错误消息给服务端，这样的消息将以error为最顶级直接呈现，并包含以下信息：</p>
+<ul>
+<li>不合法的JSON对象信息</li>
+<li>未知的msg类型</li>
+<li>其他畸形客户端请求（不包括所需字段）</li>
+<li>发送第一次connect消息或者connect消息初始化无关的其他内容</li>
+</ul>
+<p>这样的error消息将包含以下字段</p>
+<ul>
+<li>reason : string （描述错误的字符串）</li>
+<li>offendingMessage : ** （包含原来解析正确的消息）</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>做了两个例子，可以参照<a href="https://cnodejs.org/topic/51b03065555d34c678e5ee98" target="_blank" rel="noopener">这篇文章</a>做一下。</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>EJSON是一种嵌入扩展JSON的JSON对象。他支持所有平时所见的JSON类型，同时附加了如下内容：</p>
+<h1 id="Dates"><a href="#Dates" class="headerlink" title="Dates"></a>Dates</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;$date&quot;: MILLISECONDS_SINCE_EPOCH&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Binary-data"><a href="#Binary-data" class="headerlink" title="Binary data:"></a>Binary data:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;$binary&quot;: BASE_64_STRING&#125;</span><br></pre></td></tr></table></figure>
+<p>基于64位字符串，有符号+和/，没有长度限制。</p>
+<p><strong>转义内容</strong>，否则看上去更像是EJSON类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;$escape&quot;: THING&#125;</span><br></pre></td></tr></table></figure>
+<p>例如，把<code>JSON</code>值<code>{$date:10000}</code>装进EJSON对象中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;$escape&quot;: &#123;&quot;$date&quot;: 10000&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>转义内容的键必须存放在下级，你也可以再嵌套<code>EJSON</code>，例如，下面将<code>$date</code>映射到一个日期对象上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;$escape&quot;: &#123;&quot;$date&quot;: &#123;&quot;$date&quot;: 32491&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="User-specified-types"><a href="#User-specified-types" class="headerlink" title="User-specified types"></a>User-specified types</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;$type&quot;: TYPENAME, &quot;$value&quot;: VALUE&#125;</span><br></pre></td></tr></table></figure>
+<p>实现EJSON应尽量保证键位顺序。如果允许，也可以不必这样。</p>
+<blockquote>
+<p>MongoDB依赖键位顺序。在MongoDB中使用EJSON是，实现的EJSON必须保持键位顺序。</p>
+</blockquote>
+<p>有关EJSON的详细信息可以到Meteor的<a href="http://docs.meteor.com/api/ejson.html" target="_blank" rel="noopener">文档中心-EJSON</a>查阅，或是查看讲解<a href="http://www.eventedmind.com/posts/meteor-what-is-ejson" target="_blank" rel="noopener">EJSON的视频</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="熊远文(vinnyxiong) 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="熊远文(vinnyxiong) 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    熊远文(vinnyxiong)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://vinnyxiong.cn/blog/Meteor-DDP-translate.html" title="【转载】Meteor-DDP 翻译">http://vinnyxiong.cn/blog/Meteor-DDP-translate.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Meteor/" rel="tag"># Meteor</a>
+          
+            <a href="/tags/DDP/" rel="tag"># DDP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/life-2017-summer-time.html" rel="next" title="2017 夏至已至">
+                <i class="fa fa-chevron-left"></i> 2017 夏至已至
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="熊远文(vinnyxiong)" />
+            
+              <p class="site-author-name" itemprop="name">熊远文(vinnyxiong)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vinnyxiong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/vinnyxiong" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-github"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/users/5eef341da562/latest_articles" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-tags"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xiongyuanwen@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iissnan.com/" title="IIssNan's Notes" target="_blank">IIssNan's Notes</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT官网" target="_blank">NexT官网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mindhacks.cn/" title="刘未鹏|Mind Hacks" target="_blank">刘未鹏|Mind Hacks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com/" title="唐巧的博客" target="_blank">唐巧的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://onevcat.com/" title="OneV's Den" target="_blank">OneV's Den</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wereadteam.github.io/" title="WeRead团队博客" target="_blank">WeRead团队博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ibireme.com/author/ibireme/" title="ibireme YYKit 组件作者" target="_blank">ibireme YYKit 组件作者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://draveness.me/" title="draveness" target="_blank">draveness</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.cnbang.net/" title="bang JSPatch 作者" target="_blank">bang JSPatch 作者</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DDP定义"><span class="nav-text">DDP定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一般消息结构"><span class="nav-text">一般消息结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立DDP连接"><span class="nav-text">建立DDP连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#message分类"><span class="nav-text">message分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤"><span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管理数据"><span class="nav-text">管理数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#message分类-1"><span class="nav-text">message分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-1"><span class="nav-text">步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程过程调用"><span class="nav-text">远程过程调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#message分类-2"><span class="nav-text">message分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤-2"><span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误"><span class="nav-text">错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-text">附录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dates"><span class="nav-text">Dates</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binary-data"><span class="nav-text">Binary data:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#User-specified-types"><span class="nav-text">User-specified types</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">熊远文(vinnyxiong)</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div class="hosted-by">
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vinnyxiong.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vinnyxiong.cn/blog/Meteor-DDP-translate.html';
+          this.page.identifier = '/blog/Meteor-DDP-translate.html';
+          this.page.title = '【转载】Meteor-DDP 翻译';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vinnyxiong.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="JetjrKc8oFqTtBHbhXoWEt8JqzMxLa7P1eGlKGniGmA" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="W2rAP9akzL" />
+
+
+
+
+  <meta name="360-site-verification" content="66512f81ccac9717dbf92c52b925b64d" />
+
+
+
+  <meta name="sogou-site-verification" content="851iLtm10m" />
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="VinnyXiong's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1 Hexo 博客主题的选择为什么先选主题呢？因为不同的主题会有不同的风格，配合主题风格来去个性化我们的博客，比如博客标题、博客介绍、网站图标等，可以让这些更加匹配主题风格。况且一旦选定了一个主题，这就是你的博客的风格了，不会随意改变。所以首先选定一个主题是个性化的第一步。如果你有一定的编程知识，又喜欢自己折腾，那么你自己写一款主题或者在别人的主题之上做修改，也是一件很Geek的事情。如果你只想用">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo之旅(三)：Hexo博客个性化及NexT主题配置">
+<meta property="og:url" content="http://vinnyxiong.cn/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html">
+<meta property="og:site_name" content="VinnyXiong&#39;s Notes">
+<meta property="og:description" content="1 Hexo 博客主题的选择为什么先选主题呢？因为不同的主题会有不同的风格，配合主题风格来去个性化我们的博客，比如博客标题、博客介绍、网站图标等，可以让这些更加匹配主题风格。况且一旦选定了一个主题，这就是你的博客的风格了，不会随意改变。所以首先选定一个主题是个性化的第一步。如果你有一定的编程知识，又喜欢自己折腾，那么你自己写一款主题或者在别人的主题之上做修改，也是一件很Geek的事情。如果你只想用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-11T11:52:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo之旅(三)：Hexo博客个性化及NexT主题配置">
+<meta name="twitter:description" content="1 Hexo 博客主题的选择为什么先选主题呢？因为不同的主题会有不同的风格，配合主题风格来去个性化我们的博客，比如博客标题、博客介绍、网站图标等，可以让这些更加匹配主题风格。况且一旦选定了一个主题，这就是你的博客的风格了，不会随意改变。所以首先选定一个主题是个性化的第一步。如果你有一定的编程知识，又喜欢自己折腾，那么你自己写一款主题或者在别人的主题之上做修改，也是一件很Geek的事情。如果你只想用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vinnyxiong.cn/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html"/>
+
+
+
+
+
+  <title>Hexo之旅(三)：Hexo博客个性化及NexT主题配置 | VinnyXiong's Notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-74176655-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5d57cf2d1d17a4c46d9fc75184425bf7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">VinnyXiong's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">熊远文的个人博客</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blogs">
+          <a href="/blogs/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />
+            
+            优秀博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Kh4QjejjfHq9XdTsbHzu','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://vinnyxiong.cn/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="熊远文(vinnyxiong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VinnyXiong's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Hexo之旅(三)：Hexo博客个性化及NexT主题配置</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-03T09:24:01+08:00">
+                2016-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Hexo-博客主题的选择"><a href="#1-Hexo-博客主题的选择" class="headerlink" title="1 Hexo 博客主题的选择"></a>1 Hexo 博客主题的选择</h2><p>为什么先选主题呢？因为不同的主题会有不同的风格，配合主题风格来去个性化我们的博客，比如博客标题、博客介绍、网站图标等，可以让这些更加匹配主题风格。况且一旦选定了一个主题，这就是你的博客的风格了，不会随意改变。所以首先选定一个主题是个性化的第一步。<br>如果你有一定的编程知识，又喜欢自己折腾，那么你自己写一款主题或者在别人的主题之上做修改，也是一件很Geek的事情。<br>如果你只想用现成的主题，那就选一款吧。Hexo 官网收录了几十款主题，地址在这里：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a>。<br>知乎上对一些主题的评价：<a href="http://www.zhihu.com/question/24422335" target="_blank" rel="noopener">有哪些好看的 Hexo 主题？</a>。<br>我的博客也正是这样，选择了评价最高的 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener"><strong>NexT</strong></a> 主题。<br>你呢？如果你跟我一样，选择了 NexT 主题，那么跟着我一起做个性化配置吧，当然，别的主题的配置也大体相同的。<br><a id="more"></a></p>
+<h2 id="2-新主题安装"><a href="#2-新主题安装" class="headerlink" title="2 新主题安装"></a>2 新主题安装</h2><p>NexT 主题提供了详细的 <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">使用文档</a> 。</p>
+<h3 id="2-1-下载-NexT-主题"><a href="#2-1-下载-NexT-主题" class="headerlink" title="2.1 下载 NexT 主题"></a>2.1 下载 NexT 主题</h3><p>主题的安装很简单，执行以下命令即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-启用-NexT-主题"><a href="#2-2-启用-NexT-主题" class="headerlink" title="2.2 启用 NexT 主题"></a>2.2 启用 NexT 主题</h3><p>克隆/下载 完成后，打开 站点配置文件，找到<code>theme</code>字段，并将其值更改为<code>next</code>。</p>
+<blockquote><p>这里注意区分两个配置文件：<br>站点配置文件：是你的 hexo 博客目录下面的 _config.yml 文件。<br>主题配置文件：是 themes/next 目录下的 _config.yml 文件。</p>
+</blockquote>
+<h3 id="2-3-验证主题是否启用"><a href="#2-3-验证主题是否启用" class="headerlink" title="2.3 验证主题是否启用"></a>2.3 验证主题是否启用</h3><p>运行<code>hexo s --debug</code>，并访问<code>http://localhost:4000</code>，确保站点正确运行。</p>
+<h2 id="3-博客基本配置"><a href="#3-博客基本配置" class="headerlink" title="3 博客基本配置"></a>3 博客基本配置</h2><h3 id="3-1-语言设置"><a href="#3-1-语言设置" class="headerlink" title="3.1 语言设置"></a>3.1 语言设置</h3><p>每个主题都会配置几种界面显示语言，修改语言只要编辑 站点配置文件，将 language 设置成你所需要的语言。<br>例如选用简体中文，则配置为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language: zh-Hans</span><br></pre></td></tr></table></figure></p>
+<p>查看主题支持哪些语言可以看 <code>themes/next/languages</code> 目录下有哪些语言文件。</p>
+<h3 id="3-2-网站标题，作者"><a href="#3-2-网站标题，作者" class="headerlink" title="3.2 网站标题，作者"></a>3.2 网站标题，作者</h3><p>打开 站点配置文件 ，修改这些值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Hexo #博客标题</span><br><span class="line">subtitle: #博客副标题</span><br><span class="line">description: #博客描述</span><br><span class="line">author: #博客描述</span><br></pre></td></tr></table></figure>
+<blockquote><p>注意：配置文件要符合英文标点符号使用规范: 冒号后必须空格，否则会编译错误</p>
+</blockquote>
+<h3 id="3-3-域名，文章链接"><a href="#3-3-域名，文章链接" class="headerlink" title="3.3 域名，文章链接"></a>3.3 域名，文章链接</h3><p>打开 站点配置文件 ，修改这些值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: http://xxx #你的博客网址</span><br><span class="line">root: /	#博客跟目录，如果你的博客在网址的二级目录下，在这里填上</span><br><span class="line">permalink: /blog/:title.html #:year/:month/:day/:title/ 原来跟着年月日，建议缩短为一个 blog目录加标题，以后取文章标题的时候不要重复就可以。</span><br><span class="line">permalink_defaults: #可以不填</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-4-NexT-主题-Scheme-设置"><a href="#3-4-NexT-主题-Scheme-设置" class="headerlink" title="3.4 NexT 主题 Scheme 设置"></a>3.4 NexT 主题 Scheme 设置</h3><p>NexT 主题目前提供了3中风格类似，但是又有点不同的主题风格，可以通过修改 主题配置文件 中的 Scheme 值来启用其中一种风格，例如我的博客用的是 Pisces 分栏风格，只要把另外两个用<code>#</code>注释掉即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-5-更多基本配置参考"><a href="#3-5-更多基本配置参考" class="headerlink" title="3.5 更多基本配置参考"></a>3.5 更多基本配置参考</h3><p>其实还有更多的博客及主题的设置，可以直接参考 <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">Hexo官方文档</a> 和 <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT主题文档</a> ,他们都是中文的。</p>
+<p>NexT 在 Github 上的问题反馈和解决交流很多。<a href="https://github.com/iissnan/hexo-theme-next/issues" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next/issues</a> 。如果你在配置博客过程中遇到什么问题，可以在我的博客评论中提问，或者直接到 Github 上提问都可以。</p>
+<p>看 Github 的 Fork 的人数，截止到今天(2016.03.03)。<a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">Hexo博客</a> 的 Fork 数是 1445 ，而 <a href="https://github.com/iissnan/hexo-theme-next/issues" target="_blank" rel="noopener">Next主题</a> 的 Fork 数都达到了 917 。说明这款主题受欢迎的程度之高。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="熊远文(vinnyxiong) 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="熊远文(vinnyxiong) 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    熊远文(vinnyxiong)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://vinnyxiong.cn/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html" title="Hexo之旅(三)：Hexo博客个性化及NexT主题配置">http://vinnyxiong.cn/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html" rel="next" title="Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)">
+                <i class="fa fa-chevron-left"></i> Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/在Xcode中为main函数设置输入参数.html" rel="prev" title="在Xcode中为main函数设置输入参数">
+                在Xcode中为main函数设置输入参数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="熊远文(vinnyxiong)" />
+            
+              <p class="site-author-name" itemprop="name">熊远文(vinnyxiong)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vinnyxiong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/vinnyxiong" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-github"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/users/5eef341da562/latest_articles" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-tags"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xiongyuanwen@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iissnan.com/" title="IIssNan's Notes" target="_blank">IIssNan's Notes</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT官网" target="_blank">NexT官网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mindhacks.cn/" title="刘未鹏|Mind Hacks" target="_blank">刘未鹏|Mind Hacks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com/" title="唐巧的博客" target="_blank">唐巧的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://onevcat.com/" title="OneV's Den" target="_blank">OneV's Den</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wereadteam.github.io/" title="WeRead团队博客" target="_blank">WeRead团队博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ibireme.com/author/ibireme/" title="ibireme YYKit 组件作者" target="_blank">ibireme YYKit 组件作者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://draveness.me/" title="draveness" target="_blank">draveness</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.cnbang.net/" title="bang JSPatch 作者" target="_blank">bang JSPatch 作者</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Hexo-博客主题的选择"><span class="nav-text">1 Hexo 博客主题的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-新主题安装"><span class="nav-text">2 新主题安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-下载-NexT-主题"><span class="nav-text">2.1 下载 NexT 主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-启用-NexT-主题"><span class="nav-text">2.2 启用 NexT 主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-验证主题是否启用"><span class="nav-text">2.3 验证主题是否启用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-博客基本配置"><span class="nav-text">3 博客基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-语言设置"><span class="nav-text">3.1 语言设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-网站标题，作者"><span class="nav-text">3.2 网站标题，作者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-域名，文章链接"><span class="nav-text">3.3 域名，文章链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-NexT-主题-Scheme-设置"><span class="nav-text">3.4 NexT 主题 Scheme 设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-更多基本配置参考"><span class="nav-text">3.5 更多基本配置参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">熊远文(vinnyxiong)</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div class="hosted-by">
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vinnyxiong.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vinnyxiong.cn/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html';
+          this.page.identifier = '/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html';
+          this.page.title = 'Hexo之旅(三)：Hexo博客个性化及NexT主题配置';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vinnyxiong.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

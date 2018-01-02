@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="JetjrKc8oFqTtBHbhXoWEt8JqzMxLa7P1eGlKGniGmA" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="W2rAP9akzL" />
+
+
+
+
+  <meta name="360-site-verification" content="66512f81ccac9717dbf92c52b925b64d" />
+
+
+
+  <meta name="sogou-site-verification" content="851iLtm10m" />
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="VinnyXiong's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1 Git Pages 服务准备工欲善其事，必先利其器。  在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了Pages服务。来看GitCafe上的介绍。GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)">
+<meta property="og:url" content="http://vinnyxiong.cn/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html">
+<meta property="og:site_name" content="VinnyXiong&#39;s Notes">
+<meta property="og:description" content="1 Git Pages 服务准备工欲善其事，必先利其器。  在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了Pages服务。来看GitCafe上的介绍。GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建1.jpg">
+<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建2.jpg">
+<meta property="og:updated_time" content="2016-04-05T15:52:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)">
+<meta name="twitter:description" content="1 Git Pages 服务准备工欲善其事，必先利其器。  在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了Pages服务。来看GitCafe上的介绍。GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，">
+<meta name="twitter:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vinnyxiong.cn/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html"/>
+
+
+
+
+
+  <title>Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台) | VinnyXiong's Notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-74176655-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5d57cf2d1d17a4c46d9fc75184425bf7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">VinnyXiong's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">熊远文的个人博客</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blogs">
+          <a href="/blogs/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />
+            
+            优秀博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Kh4QjejjfHq9XdTsbHzu','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://vinnyxiong.cn/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="熊远文(vinnyxiong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VinnyXiong's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-01T10:54:02+08:00">
+                2016-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Git-Pages-服务准备"><a href="#1-Git-Pages-服务准备" class="headerlink" title="1 Git Pages 服务准备"></a>1 Git Pages 服务准备</h2><blockquote><p>工欲善其事，必先利其器。</p>
+</blockquote>
+<p>在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了<strong>Pages</strong>服务。来看GitCafe上的介绍。<br><blockquote><p>GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，支持绑定自定义域名。<br>GitCafe Pages 支持用户 Pages 服务和项目 Pages 服务。用户 Pages 可以通过 user_name.gitcafe.io 形式的 URL 直接访问，适合用作个人或组织的静态博客或网站；项目 Pages 需通过user_name.gitcafe.io/project_name形式的 URL 访问，更适合托管项目的官网或博客。</p>
+<footer><strong>Pages服务</strong><cite><a href="https://help.gitcafe.com/manuals/help/pages-services" target="_blank" rel="noopener">help.gitcafe.com/manuals/help/pages-services</a></cite></footer></blockquote></p>
+<h3 id="1-1-创建Github项目"><a href="#1-1-创建Github项目" class="headerlink" title="1.1 创建Github项目"></a>1.1 创建Github项目</h3><p>这里只以Github为例，GitCafe是类似的。<br>如果还没有Github账号，先去注册一个吧<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>。<br>用刚刚注册的 Github 账号登录，然后在点击页面右上角的加号，在弹出菜单中点击<code>New Repository</code>，如图所示<a id="more"></a><br><img src="/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建1.jpg"><br>然后会跳转到一个新建库(Create new repository)的页面，在<code>Repository name</code>一栏填<code>[your_username].github.io</code>，<code>[your_username]</code>是你 Github 上的用户名，请务必按照此格式填写，否则无法在 Github 上部署博客。然后点击 Create repository 按钮提交。<br>如果一切顺利会出现一个页面，有一个 SSH 地址，形如<code>git@github.com:[your_username]/[your_username].github.io.git</code>，下一步会用到。（这里会有两种形式的地址，一种是HTTPS的，一种是SSH的，我们用SSH形式的）。</p>
+<h3 id="1-2-添加-SSH-公钥"><a href="#1-2-添加-SSH-公钥" class="headerlink" title="1.2 添加 SSH 公钥"></a>1.2 添加 SSH 公钥</h3><p>为了保证安全，以及不用每次输入git密码，我们可以在Github上添加 SSH 公钥。<br>SSH 密钥的创建需要在终端（命令行）环境下进行，我们首先进入命令行环境。通常在 Mac OS X 和 Linux 平台下我们使用终端工具（Terminal），在 Windows 平台中，可以使用 Git Bash 工具。<br>在 GitCafe 的官网上有很详细的添加 SSH 公钥的方法的介绍。<br><a href="https://help.gitcafe.com/manuals/help/ssh-key" target="_blank" rel="noopener"><strong>点击查看“添加 SSH 公钥”的方法</strong></a><br><em>注意：</em>如果是同一个Email注册的Github和GitCafe，在本地只需要生成一次公钥密钥，然后分别添加到Github和GitCafe上。<br>添加到Github上的方法与GitCafe是类似的，点击右上角的头像打开<code>setting</code>，点击<code>SSH Keys</code>，点击右上角的<code>New SSH key</code>，将公钥复制进去创建即可。<br><img src="/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建2.jpg"></p>
+<p>做完上面这两个步骤，我们的 Pages 服务就准备好了，下面开始搭建本地环境。</p>
+<h2 id="2-本地环境准备"><a href="#2-本地环境准备" class="headerlink" title="2 本地环境准备"></a>2 本地环境准备</h2><p>既然是为黑客设计的博客框架，安装起来肯定没有像普通应用程序那么简单，需要一些准备工作，但请相信我，并不复杂。</p>
+<ol>
+<li>Hexo 是基于 Node.js 的，而且我们需要使用 git 来管理代码，所以总体上来说我们需要安装 Node.js 和 Git。</li>
+<li>安装 Node.js 和 Git 可以通过 HomeBrew 安装。</li>
+</ol>
+<h3 id="2-1-安装-HomeBrew"><a href="#2-1-安装-HomeBrew" class="headerlink" title="2.1 安装 HomeBrew"></a>2.1 安装 HomeBrew</h3><p>HomeBrew 是一个非常有用的软件包管理系统，你可以把它想象成一个稍微抽象一点的 Mac App Store。正如我们用 Mac App Store 来安装其他软件一样，我们这一步安装 HomeBrew 的目的是为了安装别的软件（Node.js 和 Git）。当然 Mac App Store 和 HomeBrew 本身也是软件。<br>安装 HomeBrew 非常简单，打开终端 (Terminal)，执行以下命令（所谓「执行」即「输入+回车」，下同）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>如果在执行上如命令的时候弹出需要安装 Xcode Command Line Tool 的提示，直接点击安装即可。<br>安装好之后最好先执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew doctor</span><br></pre></td></tr></table></figure>
+<p>此条命令用来诊断安装中出现的问题并提示修复方法，如果没有问题则会显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ Your system is ready to brew.</span><br></pre></td></tr></table></figure>
+<p>如遇问题，则按照提示处理，如果不懂如何处理可以先试着执行后面的步骤，如果能成功，则没有太大问题，毕竟我们只是想写博客而已。当然，做任何事情之前，备份是必须的。</p>
+<h3 id="2-2-安装-Git"><a href="#2-2-安装-Git" class="headerlink" title="2.2 安装 Git"></a>2.2 安装 Git</h3><p>安装 Git 非常简单，执行以下命令即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install git</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-安装-Node-js"><a href="#2-3-安装-Node-js" class="headerlink" title="2.3 安装 Node.js"></a>2.3 安装 Node.js</h3><p>Hexo官网上说安装Node.js 的最佳方式是使用nvm。因此推荐的安装流程如下：</p>
+<ol>
+<li>使用Homebrew安裝nvm</li>
+<li>使用nvm安裝Node.js</li>
+<li>使用nvm无痛切换Node.js版本</li>
+</ol>
+<h4 id="使用Homebrew安裝nvm"><a href="#使用Homebrew安裝nvm" class="headerlink" title="使用Homebrew安裝nvm"></a>使用Homebrew安裝nvm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install nvm</span><br></pre></td></tr></table></figure>
+<p>安装过程看到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">==&gt; Downloading https://github.com/creationix/nvm/archive/v0.30.1.tar.gz</span><br><span class="line">==&gt; Downloading from https://codeload.github.com/creationix/nvm/tar.gz/v0.30.1</span><br><span class="line">######################################################################## 100.0%</span><br><span class="line">==&gt; Caveats</span><br><span class="line">Please note that upstream has asked us to make explicit managing</span><br><span class="line">nvm via Homebrew is unsupported by them and you should check any</span><br><span class="line">problems against the standard nvm install method prior to reporting.</span><br><span class="line"></span><br><span class="line">You should create NVM&apos;s working directory if it doesn&apos;t exist:</span><br><span class="line"></span><br><span class="line">  mkdir ~/.nvm</span><br><span class="line"></span><br><span class="line">Add the following to ~/.bash_profile or your desired shell</span><br><span class="line">configuration file:</span><br><span class="line"></span><br><span class="line">  export NVM_DIR=~/.nvm</span><br><span class="line">  . $(brew --prefix nvm)/nvm.sh</span><br><span class="line"></span><br><span class="line">You can set $NVM_DIR to any location, but leaving it unchanged from</span><br><span class="line">/usr/local/Cellar/nvm/0.30.1 will destroy any nvm-installed Node installations</span><br><span class="line">upon upgrade/reinstall.</span><br><span class="line"></span><br><span class="line">Type `nvm help` for further information.</span><br><span class="line"></span><br><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/local/etc/bash_completion.d</span><br><span class="line">==&gt; Summary</span><br><span class="line">🍺  /usr/local/Cellar/nvm/0.30.1: 6 files, 82.6K, built in 6 seconds</span><br></pre></td></tr></table></figure>
+<p>根据提示知道，为了让你可以直接在shell使用nvm指令，必须创建nvm的工作目录，并且在你的 .bash_profile 加入以下两行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=~/.nvm</span><br><span class="line">. $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>在终端按顺序执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/.nvm</span><br><span class="line">$ echo &quot;export NVM_DIR=~/.nvm&quot; &gt;&gt; .bash_profile</span><br><span class="line">$ echo &quot;. $(brew --prefix nvm)/nvm.sh&quot; &gt;&gt; .bash_profile</span><br></pre></td></tr></table></figure>
+<p>记得重新source你的 .bash_profile来让设定生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>最后用 <code>nvm help</code> 来验证nvm是否正确安装</p>
+<p><strong>以上步骤一定要执行，不然无法在命令行使用nvm。有时候你明明记得已经安装了nvm，但是提示找不到nvm命令，则可以重复执行以上的步骤。</strong></p>
+<h4 id="使用nvm安裝Node-js"><a href="#使用nvm安裝Node-js" class="headerlink" title="使用nvm安裝Node.js"></a>使用nvm安裝Node.js</h4><p>安裝完了nvm，接著安裝主角 Node.js。先用 <code>$ nvm ls-remote</code> 指令看一下有哪些版本可以安裝：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br><span class="line">      .</span><br><span class="line">      .</span><br><span class="line">      .</span><br><span class="line">       v0.11.12</span><br><span class="line">       v0.11.13</span><br><span class="line">       v0.11.14</span><br><span class="line">       v0.11.15</span><br><span class="line">       v0.11.16</span><br><span class="line">        v0.12.0</span><br><span class="line">        v0.12.1</span><br><span class="line">        v0.12.2</span><br><span class="line">        v0.12.3</span><br><span class="line">        v0.12.4</span><br><span class="line">        v0.12.5</span><br><span class="line">        v0.12.6</span><br><span class="line">        v0.12.7</span><br><span class="line">        v0.12.8</span><br><span class="line">        v0.12.9</span><br><span class="line">        v0.12.10</span><br><span class="line">      .</span><br><span class="line">      .</span><br><span class="line">      .</span><br></pre></td></tr></table></figure>
+<p>直接用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install &lt;version&gt;</span><br></pre></td></tr></table></figure>
+<p>指令安装官网上建议的版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install v0.12.10</span><br><span class="line">######################################################################## 100.0%</span><br><span class="line"></span><br><span class="line">Now using node v0.12.2</span><br></pre></td></tr></table></figure>
+<h4 id="使用nvm无痛切换Node-js版本"><a href="#使用nvm无痛切换Node-js版本" class="headerlink" title="使用nvm无痛切换Node.js版本"></a>使用nvm无痛切换Node.js版本</h4><p>检查当前使用的 Node.js 版本使用命令 <code>nvm ls</code>。如果输出结果如下表示正确：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-&gt;     v0.12.10</span><br><span class="line">         system</span><br><span class="line">default -&gt; v0.12.10</span><br><span class="line">node -&gt; stable (-&gt; v0.12.10) (default)</span><br><span class="line">stable -&gt; 0.12 (-&gt; v0.12.10) (default)</span><br><span class="line">iojs -&gt; N/A (default)</span><br></pre></td></tr></table></figure>
+<p>第一个 <code>-&gt;</code> 表示当前使用的版本，<code>default -&gt;</code> 表示默认版本，必须保证这两个，不然后面安装hexo会提示 <code>-bash: hexo: command not found</code> ，不能在命令行使用。<br>设置的方法是，先通过 <code>nvm ls</code> 看看本地安装了什么版本，如果本地没有，则应该使用上一步的方法先安装，然后执行这个命令指定版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use v0.12.10</span><br></pre></td></tr></table></figure>
+<p>再通过这个命令指定默认版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm alias default v0.12.10</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-安装-Hexo"><a href="#2-4-安装-Hexo" class="headerlink" title="2.4 安装 Hexo"></a>2.4 安装 Hexo</h3><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<p>-g 或 –global 表示全局安装模块，如果没有这个参数，会安装在当前目录的node_modules子目录下。<br>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p><code>$ npm install</code> 表示安装当前目录package.json文件中配置的dependencies模块。</p>
+<h3 id="2-5-更新-Hexo"><a href="#2-5-更新-Hexo" class="headerlink" title="2.5 更新 Hexo"></a>2.5 更新 Hexo</h3><p>官方发布了新版本后，可以在Hexo建立的博客目录内运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm update</span><br></pre></td></tr></table></figure></p>
+<p>用如下命令可以检查package.json文件中配置的dependencies的版本号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm ls --depth=0</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-6-部署-Hexo"><a href="#2-6-部署-Hexo" class="headerlink" title="2.6 部署 Hexo"></a>2.6 部署 Hexo</h3><p>Hexo 3.0版本需要单独安装发布器插件，检查博客目录的node_modules中有没有<code>hexo-deployer-git</code>文件夹，若没有，执行以下命令安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>添加 -save 参数安装的模块的名字及其版本信息会出现在package.json的dependencies选项中。</p>
+<p>另外，从Hexo 3.0开始配置文件<code>_config.yml</code>中的部署类型记得要填写成<code>git</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git ##部署类型，其它类型自行google之</span><br><span class="line">  repo: &lt;repository url&gt; ##git仓库地址</span><br><span class="line">  branch: [branch] ##git 页面分支</span><br><span class="line">  message: [message] ##git message建议默认字段update 可以自定义</span><br></pre></td></tr></table></figure></p>
+<p>如果要同时部署到 Github 和 GitCafe 上，可以按照下面的方式来写，这时候就要用到前面创建 Github 项目时的 SSH 地址了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo:</span><br><span class="line">    github: git@github.com:[your_username]/[your_username].github.io.git,master</span><br><span class="line">    gitcafe: git@gitcafe.com:[your_username]/[your_username].git,gitcafe-pages</span><br></pre></td></tr></table></figure></p>
+<p>把<code>[your_username]</code>改成你的<code>username</code>即可，逗号后面跟着分支名，如果是<code>master</code>可以省略。</p>
+<h3 id="2-7-运行-Hexo"><a href="#2-7-运行-Hexo" class="headerlink" title="2.7 运行 Hexo"></a>2.7 运行 Hexo</h3><p>到现在，一个 Hexo 博客已经搭建起来了，你可以在本地运行，也可以发布到 Git Page 服务商运行。<br>执行下面的命令就可以在本地运行一个 Hexo 博客了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server 或 hexo s</span><br></pre></td></tr></table></figure></p>
+<p>这个命令执行之后 Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>按照提示打开<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>即可。</p>
+<p>当然我们最终还是要发布到 Github 或 GitCafe 上的，每次更新完博客发布需要执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean  # 清空</span><br><span class="line">$ hexo generate 或 hexo g	# 生成</span><br><span class="line"># hexo deploy 或 hexo d		# 发布</span><br></pre></td></tr></table></figure></p>
+<p>然后在浏览器输入 <code>http://[your_username].github.io/</code>，如果是 GitCafe，则是 <code>http://[your_username].gitcafe.io/</code>，即可打开我们的博客了，里面有一篇默认的“Hello World”文章（果然任何程序都是从 Hello World 开始的啊）。</p>
+<p>有人写了个各种命令的总结：<a href="http://jslite.io/2015/03/30/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">hexo常用命令笔记</a></p>
+<h2 id="3-尾巴"><a href="#3-尾巴" class="headerlink" title="3 尾巴"></a>3 尾巴</h2><p>搭建一个 Hexo 博客还是很简单的，当然现在的运行起来的只是一个博客的默认的样子，我们需要更多的个性化，来把她真正地变成我们的个人博客。后面会再介绍博客的优化及个性化方法。<br><blockquote><p>俗话说，“好记性不如烂笔头”，写这篇文字也是为了记录自己的博客搭建过程，以及中间遇到的问题的处理和解决方法的记录，当然也可以当作是一个对于新手的教程吧。</p>
+</blockquote></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="熊远文(vinnyxiong) 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="熊远文(vinnyxiong) 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    熊远文(vinnyxiong)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://vinnyxiong.cn/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html" title="Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)">http://vinnyxiong.cn/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/Hexo之旅-一-：Hexo我的博客.html" rel="next" title="Hexo之旅(一)：Hexo我的博客">
+                <i class="fa fa-chevron-left"></i> Hexo之旅(一)：Hexo我的博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/Hexo之旅-三-：Hexo博客个性化及NexT主题配置.html" rel="prev" title="Hexo之旅(三)：Hexo博客个性化及NexT主题配置">
+                Hexo之旅(三)：Hexo博客个性化及NexT主题配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="熊远文(vinnyxiong)" />
+            
+              <p class="site-author-name" itemprop="name">熊远文(vinnyxiong)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vinnyxiong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/vinnyxiong" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-github"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/users/5eef341da562/latest_articles" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-tags"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xiongyuanwen@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iissnan.com/" title="IIssNan's Notes" target="_blank">IIssNan's Notes</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT官网" target="_blank">NexT官网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mindhacks.cn/" title="刘未鹏|Mind Hacks" target="_blank">刘未鹏|Mind Hacks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com/" title="唐巧的博客" target="_blank">唐巧的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://onevcat.com/" title="OneV's Den" target="_blank">OneV's Den</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wereadteam.github.io/" title="WeRead团队博客" target="_blank">WeRead团队博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ibireme.com/author/ibireme/" title="ibireme YYKit 组件作者" target="_blank">ibireme YYKit 组件作者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://draveness.me/" title="draveness" target="_blank">draveness</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.cnbang.net/" title="bang JSPatch 作者" target="_blank">bang JSPatch 作者</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Git-Pages-服务准备"><span class="nav-text">1 Git Pages 服务准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-创建Github项目"><span class="nav-text">1.1 创建Github项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-添加-SSH-公钥"><span class="nav-text">1.2 添加 SSH 公钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-本地环境准备"><span class="nav-text">2 本地环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-安装-HomeBrew"><span class="nav-text">2.1 安装 HomeBrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-安装-Git"><span class="nav-text">2.2 安装 Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-安装-Node-js"><span class="nav-text">2.3 安装 Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Homebrew安裝nvm"><span class="nav-text">使用Homebrew安裝nvm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用nvm安裝Node-js"><span class="nav-text">使用nvm安裝Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用nvm无痛切换Node-js版本"><span class="nav-text">使用nvm无痛切换Node.js版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-安装-Hexo"><span class="nav-text">2.4 安装 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-更新-Hexo"><span class="nav-text">2.5 更新 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-部署-Hexo"><span class="nav-text">2.6 部署 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-运行-Hexo"><span class="nav-text">2.7 运行 Hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-尾巴"><span class="nav-text">3 尾巴</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">熊远文(vinnyxiong)</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div class="hosted-by">
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vinnyxiong.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vinnyxiong.cn/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html';
+          this.page.identifier = '/blog/Hexo之旅-二-：Hexo博客搭建-在 Mac OS 平台-.html';
+          this.page.title = 'Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vinnyxiong.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

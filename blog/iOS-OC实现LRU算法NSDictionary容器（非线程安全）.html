@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="JetjrKc8oFqTtBHbhXoWEt8JqzMxLa7P1eGlKGniGmA" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="W2rAP9akzL" />
+
+
+
+
+  <meta name="360-site-verification" content="66512f81ccac9717dbf92c52b925b64d" />
+
+
+
+  <meta name="sogou-site-verification" content="851iLtm10m" />
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LRU算法,NSDictionary容器," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="VinnyXiong's Notes" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1 LRU算法LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。">
+<meta name="keywords" content="LRU算法,NSDictionary容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-OC实现LRU算法NSDictionary容器（非线程安全）">
+<meta property="og:url" content="http://vinnyxiong.cn/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html">
+<meta property="og:site_name" content="VinnyXiong&#39;s Notes">
+<meta property="og:description" content="1 LRU算法LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-08-16T11:52:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-OC实现LRU算法NSDictionary容器（非线程安全）">
+<meta name="twitter:description" content="1 LRU算法LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://vinnyxiong.cn/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html"/>
+
+
+
+
+
+  <title>iOS-OC实现LRU算法NSDictionary容器（非线程安全） | VinnyXiong's Notes</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-74176655-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?5d57cf2d1d17a4c46d9fc75184425bf7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">VinnyXiong's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">熊远文的个人博客</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blogs">
+          <a href="/blogs/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />
+            
+            优秀博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Kh4QjejjfHq9XdTsbHzu','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://vinnyxiong.cn/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="熊远文(vinnyxiong)">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VinnyXiong's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">iOS-OC实现LRU算法NSDictionary容器（非线程安全）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-02T17:30:17+08:00">
+                2016-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-LRU算法"><a href="#1-LRU算法" class="headerlink" title="1 LRU算法"></a>1 LRU算法</h2><blockquote><p><strong>LRU（Least recently used，最近最少使用）</strong>算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。</p>
+</blockquote>
+<a id="more"></a>
+<p>这篇文章对LRU缓存算法做了非常详细的介绍：<a href="http://www.cnblogs.com/-OYK/archive/2012/12/05/2803317.html" target="_blank" rel="noopener">缓存淘汰算法之LRU-OYK</a></p>
+<p>可惜<code>Foundation</code>框架中并未提供一个比较简洁的LRU算法，<code>NSCache</code>没怎么看懂，java中有<code>LruCache</code>。</p>
+<h2 id="2-使用NSDictionary实现"><a href="#2-使用NSDictionary实现" class="headerlink" title="2 使用NSDictionary实现"></a>2 使用NSDictionary实现</h2><h3 id="2-1-实现代码"><a href="#2-1-实现代码" class="headerlink" title="2.1 实现代码"></a>2.1 实现代码</h3><p>为了便于查找，缓存通常都是<code>Dictionary</code>的形式，这里也是通过继承<code>NSMutableDictionary</code>来实现一个包含LRU算法的容器。</p>
+<p>头文件如下，支持泛型：</p>
+<figure class="highlight objc"><figcaption><span>LRUMutableDictionary.h</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">LRUMutableDictionary</span>&lt;<span class="title">__covariant</span> <span class="title">KeyType</span>, <span class="title">__covariant</span> <span class="title">ObjectType</span>&gt; : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// maxCountLRU: 执行LRU算法时的最大存储的元素数量</span></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithMaxCountLRU:(<span class="built_in">NSUInteger</span>)maxCountLRU;</span><br><span class="line"></span><br><span class="line"><span class="comment">//*****NSDictionary</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">readonly</span>) <span class="built_in">NSUInteger</span> count;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSEnumerator</span>&lt;KeyType&gt; *)keyEnumerator;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)enumerateKeysAndObjectsUsingBlock:(<span class="keyword">void</span> (^)(KeyType key, ObjectType obj, <span class="built_in">BOOL</span> *stop))block;</span><br><span class="line"></span><br><span class="line"><span class="comment">//*****NSMutableDictionary</span></span><br><span class="line">- (<span class="keyword">void</span>)removeObjectForKey:(KeyType)aKey;</span><br><span class="line">- (<span class="keyword">void</span>)setObject:(ObjectType)anObject forKey:(KeyType &lt;<span class="built_in">NSCopying</span>&gt;)aKey;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeAllObjects;</span><br><span class="line">- (<span class="keyword">void</span>)removeObjectsForKeys:(<span class="built_in">NSArray</span>&lt;KeyType&gt; *)keyArray;</span><br><span class="line"></span><br><span class="line"><span class="comment">//*****LRUMutableDictionary</span></span><br><span class="line"><span class="comment">// 执行LRU算法，当访问的元素可能是被淘汰的时候，可以通过在block中返回需要访问的对象，会根据LRU机制自动添加到dictionary中</span></span><br><span class="line">- (ObjectType)objectForKey:(KeyType)aKey returnEliminateObjectUsingBlock:(ObjectType (^)(<span class="built_in">BOOL</span> maybeEliminate))block;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>实现文件如下：</p>
+<figure class="highlight objc"><figcaption><span>LRUMutableDictionary.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"LRUMutableDictionary.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">LRUMutableDictionary</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableDictionary</span> *dict;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *arrayForLRU;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSUInteger</span> maxCountLRU;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">LRUMutableDictionary</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithMaxCountLRU:(<span class="built_in">NSUInteger</span>)maxCountLRU</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        _dict = [[<span class="built_in">NSMutableDictionary</span> alloc] initWithCapacity:maxCountLRU];</span><br><span class="line">        _arrayForLRU = [[<span class="built_in">NSMutableArray</span> alloc] initWithCapacity:maxCountLRU];</span><br><span class="line">        _maxCountLRU = maxCountLRU;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#pragma mark - NSDictionary</span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSUInteger</span>)count</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [_dict count];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSEnumerator</span> *)keyEnumerator</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [_dict keyEnumerator];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)objectForKey:(<span class="keyword">id</span>)aKey</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> objectForKey:aKey returnEliminateObjectUsingBlock:^<span class="keyword">id</span>(<span class="built_in">BOOL</span> maybeEliminate) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)enumerateKeysAndObjectsUsingBlock:(<span class="keyword">void</span> (^)(<span class="keyword">id</span>, <span class="keyword">id</span>, <span class="built_in">BOOL</span> *))block</span><br><span class="line">&#123;</span><br><span class="line">    [_dict enumerateKeysAndObjectsUsingBlock:block];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - NSMutableDictionary</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeObjectForKey:(<span class="keyword">id</span>)aKey</span><br><span class="line">&#123;</span><br><span class="line">    [_dict removeObjectForKey:aKey];</span><br><span class="line">    [<span class="keyword">self</span> _removeObjectLRU:aKey];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setObject:(<span class="keyword">id</span>)anObject forKey:(<span class="keyword">id</span>&lt;<span class="built_in">NSCopying</span>&gt;)aKey</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">BOOL</span> isExist = ([_dict objectForKey:aKey] != <span class="literal">nil</span>);</span><br><span class="line">    [_dict setObject:anObject forKey:aKey];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (isExist) &#123;</span><br><span class="line">        [<span class="keyword">self</span> _adjustPositionLRU:aKey];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span> _addObjectLRU:aKey];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeAllObjects</span><br><span class="line">&#123;</span><br><span class="line">    [_dict removeAllObjects];</span><br><span class="line">    [_arrayForLRU removeAllObjects];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeObjectsForKeys:(<span class="built_in">NSArray</span> *)keyArray</span><br><span class="line">&#123;</span><br><span class="line">    [_dict removeObjectsForKeys:keyArray];</span><br><span class="line">    [_arrayForLRU removeObjectsInArray:keyArray];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - LRUMutableDictionary</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)objectForKey:(<span class="keyword">id</span>)aKey returnEliminateObjectUsingBlock:(<span class="keyword">id</span> (^)(<span class="built_in">BOOL</span>))block</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">id</span> object = [_dict objectForKey:aKey];</span><br><span class="line">    <span class="keyword">if</span> (object) &#123;</span><br><span class="line">        [<span class="keyword">self</span> _adjustPositionLRU:aKey];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (block) &#123;</span><br><span class="line">        <span class="built_in">BOOL</span> maybeEliminate = object ? <span class="literal">NO</span> : <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">id</span> newObject = block(maybeEliminate);</span><br><span class="line">        <span class="keyword">if</span> (newObject) &#123;</span><br><span class="line">            [<span class="keyword">self</span> setObject:newObject forKey:aKey];</span><br><span class="line">            <span class="keyword">return</span> [_dict objectForKey:aKey];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - LRU</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_adjustPositionLRU:(<span class="keyword">id</span>)anObject</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSUInteger</span> idx = [_arrayForLRU indexOfObject:anObject];</span><br><span class="line">    <span class="keyword">if</span> (idx != <span class="built_in">NSNotFound</span>) &#123;</span><br><span class="line">        [_arrayForLRU removeObjectAtIndex:idx];</span><br><span class="line">        [_arrayForLRU insertObject:anObject atIndex:<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_addObjectLRU:(<span class="keyword">id</span>)anObject</span><br><span class="line">&#123;</span><br><span class="line">    [_arrayForLRU insertObject:anObject atIndex:<span class="number">0</span>];</span><br><span class="line">    <span class="comment">// 当超出LRU算法限制之后，将最不常使用的元素淘汰</span></span><br><span class="line">    <span class="keyword">if</span> ((_maxCountLRU &gt; <span class="number">0</span>) &amp;&amp; (_arrayForLRU.count &gt; _maxCountLRU)) &#123;</span><br><span class="line">        [_dict removeObjectForKey:[_arrayForLRU lastObject]];</span><br><span class="line">        [_arrayForLRU removeLastObject];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 【注意】这里不要直接调用下面这个方法，因为内部调用[_arrayForLRU removeObject:anObject];的时候，</span></span><br><span class="line">        <span class="comment">// 每次都将Array从头开始遍历到最后一个，这里既然已经知道是删除最后一个了，直接删除即可。</span></span><br><span class="line">        <span class="comment">// 使用下面这种方法会增加上百倍的耗时。</span></span><br><span class="line">        <span class="comment">// [self removeObjectForKey:[_arrayForLRU lastObject]];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_removeObjectLRU:(<span class="keyword">id</span>)anObject</span><br><span class="line">&#123;</span><br><span class="line">    [_arrayForLRU removeObject:anObject];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-实现原理概述"><a href="#2-2-实现原理概述" class="headerlink" title="2.2 实现原理概述"></a>2.2 实现原理概述</h3><ul>
+<li>实现原理其实很简单，重写<code>NSMutableDictionary</code>的几个重要方法，内部持有<code>NSMutableDictionary</code>用于存储缓存数据。持有<code>NSMutableArray</code>用于存储<code>Key</code>值，<code>Key</code>的顺序为LRU算法中的优先级，最前面的元素表示最近使用，最后面的元素表示最近最少使用。</li>
+<li>每次对<code>NSMutableDictionary</code>中的元素做数据操作，都认为这个元素是最近使用的元素，然后调整该元素的<code>Key</code>在<code>NSMutableArray</code>中的顺序为第一位。</li>
+<li>设定一个容器可存储的数量最大值，当插入元素到超出这个最大值之后，在<code>NSMutableArray</code>中找到最后一个元素<code>Key</code>删除，并在<code>NSMutableDictionary</code>中找到对应的元素删除。</li>
+</ul>
+<h3 id="2-3-弊端"><a href="#2-3-弊端" class="headerlink" title="2.3 弊端"></a>2.3 弊端</h3><ol>
+<li>以上的实现在对性能要求不是特别高的时候，已经可以满足需求了。</li>
+<li>我们知道，<code>NSMutableArray</code>的内部是使用动态数组实现的，动态数组的缺点在这里被完全暴露出来，我们的实现里面基本上都在用到“插入”和“删除”的操作，这两个操作对动态数组的性能消耗是比较大的，比较好的实现方式应该是使用<strong>“双向链表”</strong>，奈何<code>Foundation</code>框架中没有我们想要的“双向链表”容器。当然我们可以使用C++的STL库中的<code>list</code>来实现，有兴趣的读者可以尝试。</li>
+<li>容器中有设定一个容器的最大存储容量值，我相信，在使用这个LRU容器时，绝大部分的情况下都是达不到这个最大容量的，淘汰算法应该是属于一种保护措施不是吗？那么问题来了，如果大部分情况下都达不到最大容量，或者可能永远都达不到最大容量，那我们每次对元素操作时做了LRU算法调整，不是白费功夫吗（这个调整还是要消耗一些性能的），毕竟这个调整最终是为了当超出容量时用来将最后面的元素淘汰而做的准备，想想是不是可以以此做一些优化？</li>
+</ol>
+<h3 id="3-性能优化"><a href="#3-性能优化" class="headerlink" title="3 性能优化"></a>3 性能优化</h3><p>针对第三点弊端做一些优化，当容量达不到最大容量值得时候，可以完全停止掉LRU算法，这时候这个LRU容器就跟普通的<code>NSMutableDictionary</code>容器没什么两样了，当容量接近最大容量值得时候，开始启动LRU算法。</p>
+<p>头文件不变，来看实现文件：</p>
+<figure class="highlight objc"><figcaption><span>LRUMutableDictionary.m</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"LRUMutableDictionary.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个开始准备启动LRU的值，当 (MaxCount - CurCount &lt; LRU_RISK_COUNT) 时才启动 LRU</span></span><br><span class="line"><span class="meta">#define LRU_RISK_COUNT 100</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">LRUMutableDictionary</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableDictionary</span> *dict;    <span class="comment">// 存储数据的字典</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *arrayForLRU;  <span class="comment">// 存放LRU的数组</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSUInteger</span> maxCountLRU;       <span class="comment">// 最大存储值，存储量超出这个值，启动LRU淘汰算法</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isOpenLRU;               <span class="comment">// 是否开启LRU算法，如果存储量远低于最大存储值时，其实没有必要开启LRU算法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">LRUMutableDictionary</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithMaxCountLRU:(<span class="built_in">NSUInteger</span>)maxCountLRU</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        _dict = [[<span class="built_in">NSMutableDictionary</span> alloc] initWithCapacity:maxCountLRU];</span><br><span class="line">        _arrayForLRU = [[<span class="built_in">NSMutableArray</span> alloc] initWithCapacity:maxCountLRU];</span><br><span class="line">        _maxCountLRU = maxCountLRU;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#pragma mark - NSDictionary</span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSUInteger</span>)count</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [_dict count];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSEnumerator</span> *)keyEnumerator</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [_dict keyEnumerator];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)objectForKey:(<span class="keyword">id</span>)aKey</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> objectForKey:aKey returnEliminateObjectUsingBlock:^<span class="keyword">id</span>(<span class="built_in">BOOL</span> maybeEliminate) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)enumerateKeysAndObjectsUsingBlock:(<span class="keyword">void</span> (^)(<span class="keyword">id</span>, <span class="keyword">id</span>, <span class="built_in">BOOL</span> *))block</span><br><span class="line">&#123;</span><br><span class="line">    [_dict enumerateKeysAndObjectsUsingBlock:block];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - NSMutableDictionary</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeObjectForKey:(<span class="keyword">id</span>)aKey</span><br><span class="line">&#123;</span><br><span class="line">    [_dict removeObjectForKey:aKey];</span><br><span class="line">    [<span class="keyword">self</span> _removeObjectLRU:aKey];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setObject:(<span class="keyword">id</span>)anObject forKey:(<span class="keyword">id</span>&lt;<span class="built_in">NSCopying</span>&gt;)aKey</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">BOOL</span> isExist = ([_dict objectForKey:aKey] != <span class="literal">nil</span>);</span><br><span class="line">    [_dict setObject:anObject forKey:aKey];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (isExist) &#123;</span><br><span class="line">        [<span class="keyword">self</span> _adjustPositionLRU:aKey];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span> _addObjectLRU:aKey];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeAllObjects</span><br><span class="line">&#123;</span><br><span class="line">    [_dict removeAllObjects];</span><br><span class="line">    [<span class="keyword">self</span> _removeAllObjectsLRU];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)removeObjectsForKeys:(<span class="built_in">NSArray</span> *)keyArray</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (keyArray.count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        [_dict removeObjectsForKeys:keyArray];</span><br><span class="line">        [<span class="keyword">self</span> _removeObjectsLRU:keyArray];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - LRUMutableDictionary</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)objectForKey:(<span class="keyword">id</span>)aKey returnEliminateObjectUsingBlock:(<span class="keyword">id</span> (^)(<span class="built_in">BOOL</span>))block</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">id</span> object = [_dict objectForKey:aKey];</span><br><span class="line">    <span class="keyword">if</span> (object) &#123;</span><br><span class="line">        [<span class="keyword">self</span> _adjustPositionLRU:aKey];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (block) &#123;</span><br><span class="line">        <span class="built_in">BOOL</span> maybeEliminate = object ? <span class="literal">NO</span> : <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">id</span> newObject = block(maybeEliminate);</span><br><span class="line">        <span class="keyword">if</span> (newObject) &#123;</span><br><span class="line">            [<span class="keyword">self</span> setObject:newObject forKey:aKey];</span><br><span class="line">            <span class="keyword">return</span> [_dict objectForKey:aKey];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark - LRU</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_adjustPositionLRU:(<span class="keyword">id</span>)anObject</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_isOpenLRU) &#123;</span><br><span class="line">        <span class="built_in">NSUInteger</span> idx = [_arrayForLRU indexOfObject:anObject];</span><br><span class="line">        <span class="keyword">if</span> (idx != <span class="built_in">NSNotFound</span>) &#123;</span><br><span class="line">            [_arrayForLRU removeObjectAtIndex:idx];</span><br><span class="line">            [_arrayForLRU insertObject:anObject atIndex:<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_addObjectLRU:(<span class="keyword">id</span>)anObject</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!_isOpenLRU &amp;&amp; [<span class="keyword">self</span> isNeedOpenLRU:_dict.count]) &#123;</span><br><span class="line">        <span class="comment">// 如果原来没有开启 LRU，现在增加一个元素之后达到了存储量临界条件，则开启，一次性将所有的Key导入</span></span><br><span class="line">        [_arrayForLRU removeAllObjects];</span><br><span class="line">        [_arrayForLRU addObjectsFromArray:_dict.allKeys];</span><br><span class="line">        [_arrayForLRU removeObject:anObject];</span><br><span class="line">        _isOpenLRU = <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (_isOpenLRU) &#123;</span><br><span class="line">        [_arrayForLRU insertObject:anObject atIndex:<span class="number">0</span>];</span><br><span class="line">        <span class="comment">// 当超出LRU算法限制之后，将最不常使用的元素淘汰</span></span><br><span class="line">        <span class="keyword">if</span> ((_maxCountLRU &gt; <span class="number">0</span>) &amp;&amp; (_arrayForLRU.count &gt; _maxCountLRU)) &#123;</span><br><span class="line">            [_dict removeObjectForKey:[_arrayForLRU lastObject]];</span><br><span class="line">            [_arrayForLRU removeLastObject];</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 【注意】这里不要直接调用下面这个方法，因为内部调用[_arrayForLRU removeObject:anObject];的时候，</span></span><br><span class="line">            <span class="comment">// 每次都将Array从头开始遍历到最后一个，这里既然已经知道是删除最后一个了，直接删除即可。</span></span><br><span class="line">            <span class="comment">// 使用下面这种方法会增加上百倍的耗时。</span></span><br><span class="line">            <span class="comment">// [self removeObjectForKey:[_arrayForLRU lastObject]];</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_removeObjectLRU:(<span class="keyword">id</span>)anObject</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_isOpenLRU) &#123;</span><br><span class="line">        [_arrayForLRU removeObject:anObject];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (![<span class="keyword">self</span> isNeedOpenLRU:_arrayForLRU.count]) &#123;</span><br><span class="line">            [_arrayForLRU removeAllObjects];</span><br><span class="line">            _isOpenLRU = <span class="literal">NO</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_removeObjectsLRU:(<span class="built_in">NSArray</span> *)otherArray</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_isOpenLRU) &#123;</span><br><span class="line">        [_arrayForLRU removeObjectsInArray:otherArray];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (![<span class="keyword">self</span> isNeedOpenLRU:_arrayForLRU.count]) &#123;</span><br><span class="line">            [_arrayForLRU removeAllObjects];</span><br><span class="line">            _isOpenLRU = <span class="literal">NO</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)_removeAllObjectsLRU</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_isOpenLRU) &#123;</span><br><span class="line">        [_arrayForLRU removeAllObjects];</span><br><span class="line">        _isOpenLRU = <span class="literal">NO</span>;    <span class="comment">// 清空全部元素了，一定可以关闭LRU</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)isNeedOpenLRU:(<span class="built_in">NSUInteger</span>)count</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> (_maxCountLRU - count) &lt; LRU_RISK_COUNT;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>上面定义 100 接近值可以根据实际情况做一些修改，以上实现方法已经在项目中实际使用，可以很好的满足需求。读者如果对于实现LRU算法有更好的方法，欢迎讨论。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="熊远文(vinnyxiong) 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="熊远文(vinnyxiong) 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    熊远文(vinnyxiong)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://vinnyxiong.cn/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html" title="iOS-OC实现LRU算法NSDictionary容器（非线程安全）">http://vinnyxiong.cn/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LRU算法/" rel="tag"># LRU算法</a>
+          
+            <a href="/tags/NSDictionary容器/" rel="tag"># NSDictionary容器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/在Xcode中为main函数设置输入参数.html" rel="next" title="在Xcode中为main函数设置输入参数">
+                <i class="fa fa-chevron-left"></i> 在Xcode中为main函数设置输入参数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/iOS-平台-TestFlight-外部测试邀请码优化方案.html" rel="prev" title="iOS 平台 TestFlight 外部测试邀请码优化方案">
+                iOS 平台 TestFlight 外部测试邀请码优化方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="熊远文(vinnyxiong)" />
+            
+              <p class="site-author-name" itemprop="name">熊远文(vinnyxiong)</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vinnyxiong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/vinnyxiong" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-github"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/users/5eef341da562/latest_articles" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-tags"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:xiongyuanwen@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://notes.iissnan.com/" title="IIssNan's Notes" target="_blank">IIssNan's Notes</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT官网" target="_blank">NexT官网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mindhacks.cn/" title="刘未鹏|Mind Hacks" target="_blank">刘未鹏|Mind Hacks</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.devtang.com/" title="唐巧的博客" target="_blank">唐巧的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://onevcat.com/" title="OneV's Den" target="_blank">OneV's Den</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wereadteam.github.io/" title="WeRead团队博客" target="_blank">WeRead团队博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.ibireme.com/author/ibireme/" title="ibireme YYKit 组件作者" target="_blank">ibireme YYKit 组件作者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://draveness.me/" title="draveness" target="_blank">draveness</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.cnbang.net/" title="bang JSPatch 作者" target="_blank">bang JSPatch 作者</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-LRU算法"><span class="nav-text">1 LRU算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用NSDictionary实现"><span class="nav-text">2 使用NSDictionary实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-实现代码"><span class="nav-text">2.1 实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-实现原理概述"><span class="nav-text">2.2 实现原理概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-弊端"><span class="nav-text">2.3 弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-性能优化"><span class="nav-text">3 性能优化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">熊远文(vinnyxiong)</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div class="hosted-by">
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://vinnyxiong.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://vinnyxiong.cn/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html';
+          this.page.identifier = '/blog/iOS-OC实现LRU算法NSDictionary容器（非线程安全）.html';
+          this.page.title = 'iOS-OC实现LRU算法NSDictionary容器（非线程安全）';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://vinnyxiong.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
