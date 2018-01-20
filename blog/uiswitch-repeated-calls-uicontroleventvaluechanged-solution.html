@@ -431,8 +431,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/blog/uiswitch-repeated-calls-uicontroleventvaluechanged-solution.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="/blog/uiswitch-repeated-calls-uicontroleventvaluechanged-solution.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/blog/uiswitch-repeated-calls-uicontroleventvaluechanged-solution.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -603,12 +602,9 @@
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -994,26 +990,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://vinnyxiong.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://vinnyxiong.cn/blog/uiswitch-repeated-calls-uicontroleventvaluechanged-solution.html';
-          this.page.identifier = '/blog/uiswitch-repeated-calls-uicontroleventvaluechanged-solution.html';
-          this.page.title = '使用UISwitch重复调用UIControlEventValueChanged的问题解决方法';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://vinnyxiong.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -1026,6 +1002,10 @@
   
 
 
+
+
+
+  
 
 
 
@@ -1064,11 +1044,7 @@
       }
 
       
-      function showGitment(){
-        document.getElementById("gitment-display-button").style.display = "none";
-        document.getElementById("gitment-container").style.display = "block";
-        renderGitment();
-      }
+      renderGitment();
       
       </script>
     
