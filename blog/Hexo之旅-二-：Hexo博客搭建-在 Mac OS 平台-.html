@@ -143,13 +143,13 @@
 <meta property="og:site_name" content="VinnyXiong&#39;s Notes">
 <meta property="og:description" content="1 Git Pages 服务准备工欲善其事，必先利其器。  在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了Pages服务。来看GitCafe上的介绍。GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建1.jpg">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建2.jpg">
-<meta property="og:updated_time" content="2016-04-05T15:52:33.000Z">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-01-Hexo%E4%B9%8B%E6%97%85-%E4%BA%8C-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.jpg">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-01-Hexo%E4%B9%8B%E6%97%85-%E4%BA%8C-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA2.jpg">
+<meta property="og:updated_time" content="2018-02-03T10:35:33.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo之旅(二)：Hexo博客搭建(在 Mac OS 平台)">
 <meta name="twitter:description" content="1 Git Pages 服务准备工欲善其事，必先利其器。  在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了Pages服务。来看GitCafe上的介绍。GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，">
-<meta name="twitter:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建1.jpg">
+<meta name="twitter:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-01-Hexo%E4%B9%8B%E6%97%85-%E4%BA%8C-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.jpg">
 
 
 
@@ -277,7 +277,7 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span>
               </a>
         </li>
       
@@ -492,8 +492,8 @@
 </blockquote>
 <p>在配置本地环境之前，先介绍Pages服务，是因为这是一切静态博客的基础。我们之所以能够使用Github、GitCafe等代码托管站来托管我们的博客，是因为他们提供了<strong>Pages</strong>服务。来看GitCafe上的介绍。<br><blockquote><p>GitCafe Pages 是一项公众网页托管和发布服务。你可以使用 GitCafe Pages 托管博客、项目官网一类的静态网页，支持绑定自定义域名。<br>GitCafe Pages 支持用户 Pages 服务和项目 Pages 服务。用户 Pages 可以通过 user_name.gitcafe.io 形式的 URL 直接访问，适合用作个人或组织的静态博客或网站；项目 Pages 需通过user_name.gitcafe.io/project_name形式的 URL 访问，更适合托管项目的官网或博客。</p>
 <footer><strong>Pages服务</strong><cite><a href="https://help.gitcafe.com/manuals/help/pages-services" target="_blank" rel="noopener">help.gitcafe.com/manuals/help/pages-services</a></cite></footer></blockquote></p>
-<h3 id="1-1-创建Github项目"><a href="#1-1-创建Github项目" class="headerlink" title="1.1 创建Github项目"></a>1.1 创建Github项目</h3><p>这里只以Github为例，GitCafe是类似的。<br>如果还没有Github账号，先去注册一个吧<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>。<br>用刚刚注册的 Github 账号登录，然后在点击页面右上角的加号，在弹出菜单中点击<code>New Repository</code>，如图所示<a id="more"></a><br><img src="/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建1.jpg"><br>然后会跳转到一个新建库(Create new repository)的页面，在<code>Repository name</code>一栏填<code>[your_username].github.io</code>，<code>[your_username]</code>是你 Github 上的用户名，请务必按照此格式填写，否则无法在 Github 上部署博客。然后点击 Create repository 按钮提交。<br>如果一切顺利会出现一个页面，有一个 SSH 地址，形如<code>git@github.com:[your_username]/[your_username].github.io.git</code>，下一步会用到。（这里会有两种形式的地址，一种是HTTPS的，一种是SSH的，我们用SSH形式的）。</p>
-<h3 id="1-2-添加-SSH-公钥"><a href="#1-2-添加-SSH-公钥" class="headerlink" title="1.2 添加 SSH 公钥"></a>1.2 添加 SSH 公钥</h3><p>为了保证安全，以及不用每次输入git密码，我们可以在Github上添加 SSH 公钥。<br>SSH 密钥的创建需要在终端（命令行）环境下进行，我们首先进入命令行环境。通常在 Mac OS X 和 Linux 平台下我们使用终端工具（Terminal），在 Windows 平台中，可以使用 Git Bash 工具。<br>在 GitCafe 的官网上有很详细的添加 SSH 公钥的方法的介绍。<br><a href="https://help.gitcafe.com/manuals/help/ssh-key" target="_blank" rel="noopener"><strong>点击查看“添加 SSH 公钥”的方法</strong></a><br><em>注意：</em>如果是同一个Email注册的Github和GitCafe，在本地只需要生成一次公钥密钥，然后分别添加到Github和GitCafe上。<br>添加到Github上的方法与GitCafe是类似的，点击右上角的头像打开<code>setting</code>，点击<code>SSH Keys</code>，点击右上角的<code>New SSH key</code>，将公钥复制进去创建即可。<br><img src="/images/blog_post_images/2016-03/2016-03-01-Hexo之旅-二-：Hexo博客搭建2.jpg"></p>
+<h3 id="1-1-创建Github项目"><a href="#1-1-创建Github项目" class="headerlink" title="1.1 创建Github项目"></a>1.1 创建Github项目</h3><p>这里只以Github为例，GitCafe是类似的。<br>如果还没有Github账号，先去注册一个吧<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>。<br>用刚刚注册的 Github 账号登录，然后在点击页面右上角的加号，在弹出菜单中点击<code>New Repository</code>，如图所示<a id="more"></a><br><img src="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-01-Hexo%E4%B9%8B%E6%97%85-%E4%BA%8C-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.jpg"><br>然后会跳转到一个新建库(Create new repository)的页面，在<code>Repository name</code>一栏填<code>[your_username].github.io</code>，<code>[your_username]</code>是你 Github 上的用户名，请务必按照此格式填写，否则无法在 Github 上部署博客。然后点击 Create repository 按钮提交。<br>如果一切顺利会出现一个页面，有一个 SSH 地址，形如<code>git@github.com:[your_username]/[your_username].github.io.git</code>，下一步会用到。（这里会有两种形式的地址，一种是HTTPS的，一种是SSH的，我们用SSH形式的）。</p>
+<h3 id="1-2-添加-SSH-公钥"><a href="#1-2-添加-SSH-公钥" class="headerlink" title="1.2 添加 SSH 公钥"></a>1.2 添加 SSH 公钥</h3><p>为了保证安全，以及不用每次输入git密码，我们可以在Github上添加 SSH 公钥。<br>SSH 密钥的创建需要在终端（命令行）环境下进行，我们首先进入命令行环境。通常在 Mac OS X 和 Linux 平台下我们使用终端工具（Terminal），在 Windows 平台中，可以使用 Git Bash 工具。<br>在 GitCafe 的官网上有很详细的添加 SSH 公钥的方法的介绍。<br><a href="https://help.gitcafe.com/manuals/help/ssh-key" target="_blank" rel="noopener"><strong>点击查看“添加 SSH 公钥”的方法</strong></a><br><em>注意：</em>如果是同一个Email注册的Github和GitCafe，在本地只需要生成一次公钥密钥，然后分别添加到Github和GitCafe上。<br>添加到Github上的方法与GitCafe是类似的，点击右上角的头像打开<code>setting</code>，点击<code>SSH Keys</code>，点击右上角的<code>New SSH key</code>，将公钥复制进去创建即可。<br><img src="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-01-Hexo%E4%B9%8B%E6%97%85-%E4%BA%8C-%EF%BC%9AHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA2.jpg"></p>
 <p>做完上面这两个步骤，我们的 Pages 服务就准备好了，下面开始搭建本地环境。</p>
 <h2 id="2-本地环境准备"><a href="#2-本地环境准备" class="headerlink" title="2 本地环境准备"></a>2 本地环境准备</h2><p>既然是为黑客设计的博客框架，安装起来肯定没有像普通应用程序那么简单，需要一些准备工作，但请相信我，并不复杂。</p>
 <ol>
@@ -725,7 +725,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1124,7 +1124,21 @@
         (d.head || d.body).appendChild(s);
       }
       
-        loadComments();
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
       
     </script>
   

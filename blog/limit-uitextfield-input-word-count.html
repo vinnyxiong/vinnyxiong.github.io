@@ -143,12 +143,12 @@
 <meta property="og:site_name" content="VinnyXiong&#39;s Notes">
 <meta property="og:description" content="1.常用实现方法iOS开发中，UITextField限制输入字数，我们可以重写UITextFieldDelegate中的方法： 1- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // retu">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2015-12/2015-12-02-limit-uitextfield-input-word-count.png">
-<meta property="og:updated_time" content="2016-03-29T01:23:31.000Z">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2015-12-02-limit-uitextfield-input-word-count.png">
+<meta property="og:updated_time" content="2018-02-03T10:33:32.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UITextField限制字数的实现">
 <meta name="twitter:description" content="1.常用实现方法iOS开发中，UITextField限制输入字数，我们可以重写UITextFieldDelegate中的方法： 1- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // retu">
-<meta name="twitter:image" content="http://vinnyxiong.cn/images/blog_post_images/2015-12/2015-12-02-limit-uitextfield-input-word-count.png">
+<meta name="twitter:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2015-12-02-limit-uitextfield-input-word-count.png">
 
 
 
@@ -276,7 +276,7 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span>
               </a>
         </li>
       
@@ -493,7 +493,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- (NSUInteger)textLengthFromString:(NSString *)string</span><br><span class="line">&#123;</span><br><span class="line">    return [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string</span><br><span class="line">&#123;</span><br><span class="line">    if ([string length] &gt; 0)&#123;</span><br><span class="line">        NSString *textFieldString = [textField.text stringByReplacingCharactersInRange:range withString:string];</span><br><span class="line">        if ([self textLengthFromString:textFieldString] &gt; NameMaxLength)&#123;</span><br><span class="line">            return NO;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return  YES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="2-遇到的问题"><a href="#2-遇到的问题" class="headerlink" title="2.遇到的问题"></a>2.遇到的问题</h2><p>以上方法对于监听键盘输入和退格删除都没有问题，但是，当我们使用粘贴或者直接在键盘上面点选文字输入（如下图）的时候，并不会调用这个方法。不知道<code>Apple</code>这种做法是什么原因，或许是我对这些方法的含义理解不深吧。</p>
-<img src="/images/blog_post_images/2015-12/2015-12-02-limit-uitextfield-input-word-count.png">
+<img src="http://olk6082ul.bkt.clouddn.com/blog-images/2015-12-02-limit-uitextfield-input-word-count.png">
 <h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p><code>UITextField</code>还可以监听很多的事件，这些事件是由<code>UIControlEvents</code>提供的，适用于<code>UITextField</code>的事件如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UIControlEventEditingDidBegin     = 1 &lt;&lt; 16,     // UITextField</span><br><span class="line">UIControlEventEditingChanged      = 1 &lt;&lt; 17,</span><br><span class="line">UIControlEventEditingDidEnd       = 1 &lt;&lt; 18,</span><br><span class="line">UIControlEventEditingDidEndOnExit = 1 &lt;&lt; 19,     // &apos;return key&apos; ending editing</span><br></pre></td></tr></table></figure>
 <p>对此，我们可以监听<code>UIControlEventEditingChanged</code>事件，</p>
@@ -673,7 +673,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1072,7 +1072,21 @@
         (d.head || d.body).appendChild(s);
       }
       
-        loadComments();
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
       
     </script>
   

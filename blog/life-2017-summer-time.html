@@ -141,11 +141,11 @@
 <meta property="og:url" content="http://vinnyxiong.cn/blog/life-2017-summer-time.html">
 <meta property="og:site_name" content="VinnyXiong&#39;s Notes">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2017-07/2017-07-11-summer.jpg">
-<meta property="og:updated_time" content="2018-01-20T13:04:40.099Z">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2017-07-11-summer.jpg">
+<meta property="og:updated_time" content="2018-02-03T10:40:12.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017 夏至已至">
-<meta name="twitter:image" content="http://vinnyxiong.cn/images/blog_post_images/2017-07/2017-07-11-summer.jpg">
+<meta name="twitter:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2017-07-11-summer.jpg">
 
 
 
@@ -273,7 +273,7 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span>
               </a>
         </li>
       
@@ -484,7 +484,7 @@
       
 
       
-        <img src="/images/blog_post_images/2017-07/2017-07-11-summer.jpg">
+        <img src="http://olk6082ul.bkt.clouddn.com/blog-images/2017-07-11-summer.jpg">
 <a id="more"></a>
 <p>最近所在的部门在做一款应用于办公场景的即时通讯软件-<a href="http://office.qq.com/" target="_blank" rel="noopener">TIM</a>。公司在这方面的探索也有一段时间，今年3月份终于发布了正式版。</p>
 <p>记得去年做的第一个版本，自己也负责了其中最重要的一个模块的开发，当时真的是花了很多的时间和精力去做好其中的每一个功能，尽力去优化到最佳体验。但是没过多久，由于产品策略的调整，还没正式发布，整个产品就被砍掉了，当时听到这个消息的时候有太多的不舍，曾经花费那么多心血，熬了多少个日夜写出的一行行代码，还没能跟用户见面，就永久地封存了，从此成为了历史。在这个变幻莫测的互联网时代，你写的大多数代码很可能运行一两年甚至半年，就变成了历史的尘埃。</p>
@@ -658,7 +658,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1041,7 +1041,21 @@
         (d.head || d.body).appendChild(s);
       }
       
-        loadComments();
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
       
     </script>
   

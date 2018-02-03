@@ -143,14 +143,14 @@
 <meta property="og:site_name" content="VinnyXiong&#39;s Notes">
 <meta property="og:description" content="1 背景iOS 应用版本灰度测试是一个越来越令人头疼的一件事。在 iOS9.0 之后，iOS 越狱设备越来越少，想要找到参与灰度测试的越狱用户越来越难。现在苹果企业签名的包外发控制越来越严格，这条路也很难走了。因此，只能走苹果官方推荐的方式，通过 TestFlight 进行邀请测试。 关于 TestFlight 使用方法，已经有很多人总结过了，这里不赘述。比如：iOS 平台如何使用 TestFli">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请邮件.png">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请码.png">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请码代码.png">
-<meta property="og:updated_time" content="2017-02-05T09:10:44.000Z">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E9%82%AE%E4%BB%B6.png">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E7%A0%81.png">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E7%A0%81%E4%BB%A3%E7%A0%81.png">
+<meta property="og:updated_time" content="2018-02-03T10:38:39.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 平台 TestFlight 外部测试邀请码优化方案">
 <meta name="twitter:description" content="1 背景iOS 应用版本灰度测试是一个越来越令人头疼的一件事。在 iOS9.0 之后，iOS 越狱设备越来越少，想要找到参与灰度测试的越狱用户越来越难。现在苹果企业签名的包外发控制越来越严格，这条路也很难走了。因此，只能走苹果官方推荐的方式，通过 TestFlight 进行邀请测试。 关于 TestFlight 使用方法，已经有很多人总结过了，这里不赘述。比如：iOS 平台如何使用 TestFli">
-<meta name="twitter:image" content="http://vinnyxiong.cn/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请邮件.png">
+<meta name="twitter:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E9%82%AE%E4%BB%B6.png">
 
 
 
@@ -278,7 +278,7 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span>
               </a>
         </li>
       
@@ -507,12 +507,12 @@
 <p><strong>优化目标：用户可以直接拿到“邀请码”，直接在 TestFlight 输入邀请码后下载 App。</strong></p>
 <h2 id="3-1-准备-2000-个内部邮箱，用来接收-TestFlight-的邀请邮件"><a href="#3-1-准备-2000-个内部邮箱，用来接收-TestFlight-的邀请邮件" class="headerlink" title="3.1 准备 2000 个内部邮箱，用来接收 TestFlight 的邀请邮件"></a>3.1 准备 2000 个内部邮箱，用来接收 TestFlight 的邀请邮件</h2><p>可以通过某些途径，在内部准备好 2000 个邮箱，什么 QQ邮箱、163邮箱、126邮箱、新浪邮箱、hotmail、gmail 等等一批免费邮箱，而且每个邮箱都还能设置几个不同名的账户，比如一个 QQ 号排除手机号之外就可以有 4 个邮箱名（<code>123456@qq.com</code>, <code>xyz@qq.com</code>, <code>xyz@vip.qq.com</code>, <code>xyz@foxmail.com</code>）。所以要准备 2000 个邮箱账号也不是特别难的事情。不过为了方便自动化，最好还是申请单独某个类型的邮箱好一点，后面会说到。</p>
 <h2 id="3-2-提取邀请邮件中的邀请链接"><a href="#3-2-提取邀请邮件中的邀请链接" class="headerlink" title="3.2 提取邀请邮件中的邀请链接"></a>3.2 提取邀请邮件中的邀请链接</h2><p>收到的“邀请邮件”中有个 <code>Start Testing</code> 的按钮，点击之后打开一个有“邀请码”的页面。</p>
-<img src="/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请邮件.png" title="TestFlight邀请邮件">
-<img src="/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请码.png" title="TestFlight邀请码">
+<img src="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E9%82%AE%E4%BB%B6.png" title="TestFlight邀请邮件">
+<img src="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E7%A0%81.png" title="TestFlight邀请码">
 <p>如果要一封一封邮件点开来查看邀请码，那确实也太费人力了，这里能否开发一个自动化工具来查看邮件呢？应该也不是特别难的事情，苹果的邮件格式基本上是固定的，这个自动化工具开发好之后是一劳永逸的事情。</p>
 <p><code>Start Testing</code> 打开的链接格式大概是这样的：<br><a href="https://beta.itunes.apple.com/v1/invite/1ae8b3e5f47847d7a6a798222e2a2ef96fd24005bce24ff8a4de5bd41c5dc882460c5711?ct=TencentTechnologyShanghaiCoLtd&amp;advp=10000&amp;platform=ios" target="_blank" rel="noopener">https://beta.itunes.apple.com/v1/invite/1ae8b3e5f47847d7a6a798222e2a2ef96fd24005bce24ff8a4de5bd41c5dc882460c5711?ct=TencentTechnologyShanghaiCoLtd&amp;advp=10000&amp;platform=ios</a></p>
 <p>打开链接之后，Chrome 可以通过开发者工具查看页面元素，如此可以开发一个自动化提取“邀请码”的工具。</p>
-<img src="/images/blog_post_images/2017-01/2017-01-20-TestFlight邀请码代码.png" title="TestFlight邀请码代码">
+<img src="http://olk6082ul.bkt.clouddn.com/blog-images/2017-01-20-TestFlight%E9%82%80%E8%AF%B7%E7%A0%81%E4%BB%A3%E7%A0%81.png" title="TestFlight邀请码代码">
 <h2 id="3-3-优化后的流程"><a href="#3-3-优化后的流程" class="headerlink" title="3.3 优化后的流程"></a>3.3 优化后的流程</h2><ol>
 <li>提交 TestFlight 测试版本，等待审核通过。</li>
 <li>审核通过后，在 TestFlight 中导入事先准备的 2000 个邮箱账号。</li>
@@ -701,7 +701,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1100,7 +1100,21 @@
         (d.head || d.body).appendChild(s);
       }
       
-        loadComments();
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
       
     </script>
   

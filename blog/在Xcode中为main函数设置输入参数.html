@@ -143,12 +143,12 @@
 <meta property="og:site_name" content="VinnyXiong&#39;s Notes">
 <meta property="og:description" content="1.C++/Object-C中的main函数参数123456789int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        printf(&amp;quot;Hello, World! argc=%d\n&amp;quot;, argc);        for (int i = 0; i &amp;lt; argc;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-24-在Xcode中为main函数设置输入参数1.jpg">
-<meta property="og:updated_time" content="2016-03-29T01:15:16.000Z">
+<meta property="og:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-24-%E5%9C%A8Xcode%E4%B8%AD%E4%B8%BAmain%E5%87%BD%E6%95%B0%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B01.jpg">
+<meta property="og:updated_time" content="2018-02-03T10:36:14.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Xcode中为main函数设置输入参数">
 <meta name="twitter:description" content="1.C++/Object-C中的main函数参数123456789int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        printf(&amp;quot;Hello, World! argc=%d\n&amp;quot;, argc);        for (int i = 0; i &amp;lt; argc;">
-<meta name="twitter:image" content="http://vinnyxiong.cn/images/blog_post_images/2016-03/2016-03-24-在Xcode中为main函数设置输入参数1.jpg">
+<meta name="twitter:image" content="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-24-%E5%9C%A8Xcode%E4%B8%AD%E4%B8%BAmain%E5%87%BD%E6%95%B0%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B01.jpg">
 
 
 
@@ -276,7 +276,7 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span>
               </a>
         </li>
       
@@ -494,7 +494,7 @@
 <a id="more"></a>
 <h2 id="2-在Xcode中为main函数添加调试参数"><a href="#2-在Xcode中为main函数添加调试参数" class="headerlink" title="2.在Xcode中为main函数添加调试参数"></a>2.在Xcode中为main函数添加调试参数</h2><p>如果希望在调试代码的时候，也能为main函数添加参数，需要在Xcode中进行设置，方法如下：</p>
 <p>1.首先从菜单打开<code>Product-Scheme-Edit Scheme...</code>。</p>
-<img src="/images/blog_post_images/2016-03/2016-03-24-在Xcode中为main函数设置输入参数1.jpg">
+<img src="http://olk6082ul.bkt.clouddn.com/blog-images/2016-03-24-%E5%9C%A8Xcode%E4%B8%AD%E4%B8%BAmain%E5%87%BD%E6%95%B0%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%85%A5%E5%8F%82%E6%95%B01.jpg">
 <p>2.在<code>Arguments</code>中添加参数，如上图所示。<br>3.再在Xcode中调试运行，即可在Output中输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Hello, World! argc=4</span><br><span class="line">/Users/username/Library/Developer/Xcode/DerivedData/Calculator-bahlkbpokkgpyuadshgqwpythbvb/Build/Products/Debug/calc</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">Program ended with exit code: 0</span><br></pre></td></tr></table></figure></p>
 
       
@@ -668,7 +668,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1067,7 +1067,21 @@
         (d.head || d.body).appendChild(s);
       }
       
-        loadComments();
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
       
     </script>
   
